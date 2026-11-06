@@ -171,9 +171,9 @@ def charts(df,total,change):
     fig.tight_layout(rect=(0,.08,1,1));save(fig,'03_lollipop.png')
     fig,ax=plt.subplots(figsize=(9,4.7));ax.barh(names,current.insured_pct,color='#adbcc7',label='Insured');ax.barh(names,vals,left=current.insured_pct,color='#23618c',label='Uninsured')
     for i,(_,r) in enumerate(current.iterrows()):
-        ax.text(r.insured_pct/2,i,f'{r.insured_pct:.1f}%',ha='center',va='center');ax.text(r.insured_pct+r.uninsured_pct/2,i,f'{r.uninsured_pct:.1f}%',ha='center',va='center',color='white',fontsize=9)
-    ax.set(xlim=(0,100),xlabel='Share of population (%)',title='Insured and uninsured composition\n2020–2024 ACS five-year estimates');ax.legend(loc='lower center',bbox_to_anchor=(.5,-.35),ncol=2)
-    fig.tight_layout(rect=(0,.12,1,1));save(fig,'04_stacked100.png')
+        ax.text(r.insured_pct/2,i,f'{r.insured_pct:.1f}%',ha='center',va='center');ax.text(101,i,f'{r.uninsured_pct:.1f}%',ha='left',va='center',color='black',fontsize=9) if r.uninsured_pct<4 else ax.text(r.insured_pct+r.uninsured_pct/2,i,f'{r.uninsured_pct:.1f}%',ha='center',va='center',color='white',fontsize=9)
+    ax.set(xlim=(0,100),xlabel='Share of population (%)',title='Insured and uninsured composition\n2020–2024 ACS five-year estimates');fig.legend(loc='lower center',bbox_to_anchor=(.6,.06),ncol=2)
+    fig.tight_layout(rect=(0,.18,1,1));save(fig,'04_stacked100.png')
     fig,ax=plt.subplots(figsize=(9,5))
     colors=plt.get_cmap('tab10').colors
     for i,(name,r) in enumerate(change.iterrows()):

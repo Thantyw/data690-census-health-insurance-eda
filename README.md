@@ -64,7 +64,7 @@ The default pipeline requires both periods and all five jurisdictions. It stops 
 - `s2701_eda.py`: reusable loading, validation, analysis, and chart code.
 - `data_dictionary.csv`: verified variable definitions for both vintages.
 - `data/S2701_2019_metadata.json` and `data/S2701_2024_metadata.json`: official metadata snapshots.
-- `results/`: created only when the analysis runs; includes source provenance, data checks, tables, and chart PNGs.
+- `results/`: includes the completed analysis tables, draft charts, quality checks, and source provenance.
 
 ## Important interpretation boundaries
 
