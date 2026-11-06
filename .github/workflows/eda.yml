@@ -1,0 +1,37 @@
+name: Run Census S2701 EDA
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install analysis dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Refresh Census data and run analysis
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import s2701_eda as eda
+          key = os.environ.get('CENSUS_API_KEY', '').strip()
+          if not key:
+              raise SystemExit('Set the CENSUS_API_KEY repository Actions secret before running this workflow.')
+          for year in eda.PERIODS:
+              eda.fetch_api(year, key)
+          eda.run()
+          PY
+      - name: Save analysis results
+        uses: actions/upload-artifact@v4
+        with:
+          name: S2701-EDA-results
+          path: results/
+          retention-days: 14
