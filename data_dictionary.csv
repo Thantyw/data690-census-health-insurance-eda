@@ -1,0 +1,241 @@
+vintage,variable,label,type,units,role
+2019,S2701_C01_001E,Estimate!!Total!!Civilian noninstitutionalized population,int,persons,estimate
+2019,S2701_C01_001M,Margin of Error!!Total!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2019,S2701_C01_001EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C01_001MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C02_001E,Estimate!!Insured!!Civilian noninstitutionalized population,int,persons,estimate
+2019,S2701_C02_001M,Margin of Error!!Insured!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2019,S2701_C02_001EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C02_001MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C03_001E,Estimate!!Percent Insured!!Civilian noninstitutionalized population,float,percent,estimate
+2019,S2701_C03_001M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population,float,percentage points,margin of error (90%)
+2019,S2701_C03_001EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population,string,percent,annotation
+2019,S2701_C03_001MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population,string,percentage points,annotation
+2019,S2701_C04_001E,Estimate!!Uninsured!!Civilian noninstitutionalized population,int,persons,estimate
+2019,S2701_C04_001M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2019,S2701_C04_001EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C04_001MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population,string,persons,annotation
+2019,S2701_C05_001E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population,float,percent,estimate
+2019,S2701_C05_001M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population,float,percentage points,margin of error (90%)
+2019,S2701_C05_001EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population,string,percent,annotation
+2019,S2701_C05_001MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population,string,percentage points,annotation
+2019,S2701_C01_011E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2019,S2701_C01_011M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2019,S2701_C01_011EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C01_011MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C02_011E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2019,S2701_C02_011M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2019,S2701_C02_011EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C02_011MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C03_011E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percent,estimate
+2019,S2701_C03_011M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percentage points,margin of error (90%)
+2019,S2701_C03_011EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percent,annotation
+2019,S2701_C03_011MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percentage points,annotation
+2019,S2701_C04_011E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2019,S2701_C04_011M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2019,S2701_C04_011EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C04_011MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2019,S2701_C05_011E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percent,estimate
+2019,S2701_C05_011M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percentage points,margin of error (90%)
+2019,S2701_C05_011EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percent,annotation
+2019,S2701_C05_011MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percentage points,annotation
+2019,S2701_C01_012E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2019,S2701_C01_012M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2019,S2701_C01_012EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C01_012MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C02_012E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2019,S2701_C02_012M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2019,S2701_C02_012EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C02_012MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C03_012E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percent,estimate
+2019,S2701_C03_012M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percentage points,margin of error (90%)
+2019,S2701_C03_012EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percent,annotation
+2019,S2701_C03_012MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percentage points,annotation
+2019,S2701_C04_012E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2019,S2701_C04_012M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2019,S2701_C04_012EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C04_012MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2019,S2701_C05_012E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percent,estimate
+2019,S2701_C05_012M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percentage points,margin of error (90%)
+2019,S2701_C05_012EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percent,annotation
+2019,S2701_C05_012MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percentage points,annotation
+2019,S2701_C01_013E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2019,S2701_C01_013M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2019,S2701_C01_013EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C01_013MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C02_013E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2019,S2701_C02_013M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2019,S2701_C02_013EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C02_013MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C03_013E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percent,estimate
+2019,S2701_C03_013M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percentage points,margin of error (90%)
+2019,S2701_C03_013EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percent,annotation
+2019,S2701_C03_013MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percentage points,annotation
+2019,S2701_C04_013E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2019,S2701_C04_013M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2019,S2701_C04_013EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C04_013MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2019,S2701_C05_013E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percent,estimate
+2019,S2701_C05_013M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percentage points,margin of error (90%)
+2019,S2701_C05_013EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percent,annotation
+2019,S2701_C05_013MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percentage points,annotation
+2019,S2701_C01_014E,Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2019,S2701_C01_014M,Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2019,S2701_C01_014EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C01_014MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C02_014E,Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2019,S2701_C02_014M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2019,S2701_C02_014EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C02_014MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C03_014E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,float,percent,estimate
+2019,S2701_C03_014M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,float,percentage points,margin of error (90%)
+2019,S2701_C03_014EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,percent,annotation
+2019,S2701_C03_014MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,percentage points,annotation
+2019,S2701_C04_014E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2019,S2701_C04_014M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2019,S2701_C04_014EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C04_014MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2019,S2701_C05_014E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,float,percent,estimate
+2019,S2701_C05_014M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,float,percentage points,margin of error (90%)
+2019,S2701_C05_014EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,percent,annotation
+2019,S2701_C05_014MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,percentage points,annotation
+2019,S2701_C01_015E,Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2019,S2701_C01_015M,Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2019,S2701_C01_015EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C01_015MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C02_015E,Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2019,S2701_C02_015M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2019,S2701_C02_015EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C02_015MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C03_015E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,float,percent,estimate
+2019,S2701_C03_015M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,float,percentage points,margin of error (90%)
+2019,S2701_C03_015EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,percent,annotation
+2019,S2701_C03_015MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,percentage points,annotation
+2019,S2701_C04_015E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2019,S2701_C04_015M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2019,S2701_C04_015EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C04_015MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2019,S2701_C05_015E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,float,percent,estimate
+2019,S2701_C05_015M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,float,percentage points,margin of error (90%)
+2019,S2701_C05_015EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,percent,annotation
+2019,S2701_C05_015MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,percentage points,annotation
+2024,S2701_C01_001E,Estimate!!Total!!Civilian noninstitutionalized population,int,persons,estimate
+2024,S2701_C01_001M,Margin of Error!!Total!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2024,S2701_C01_001EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C01_001MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C02_001E,Estimate!!Insured!!Civilian noninstitutionalized population,int,persons,estimate
+2024,S2701_C02_001M,Margin of Error!!Insured!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2024,S2701_C02_001EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C02_001MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C03_001E,Estimate!!Percent Insured!!Civilian noninstitutionalized population,float,percent,estimate
+2024,S2701_C03_001M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population,float,percentage points,margin of error (90%)
+2024,S2701_C03_001EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population,string,percent,annotation
+2024,S2701_C03_001MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population,string,percentage points,annotation
+2024,S2701_C04_001E,Estimate!!Uninsured!!Civilian noninstitutionalized population,int,persons,estimate
+2024,S2701_C04_001M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population,int,persons,margin of error (90%)
+2024,S2701_C04_001EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C04_001MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population,string,persons,annotation
+2024,S2701_C05_001E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population,float,percent,estimate
+2024,S2701_C05_001M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population,float,percentage points,margin of error (90%)
+2024,S2701_C05_001EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population,string,percent,annotation
+2024,S2701_C05_001MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population,string,percentage points,annotation
+2024,S2701_C01_011E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2024,S2701_C01_011M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2024,S2701_C01_011EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C01_011MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C02_011E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2024,S2701_C02_011M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2024,S2701_C02_011EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C02_011MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C03_011E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percent,estimate
+2024,S2701_C03_011M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percentage points,margin of error (90%)
+2024,S2701_C03_011EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percent,annotation
+2024,S2701_C03_011MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percentage points,annotation
+2024,S2701_C04_011E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,estimate
+2024,S2701_C04_011M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,int,persons,margin of error (90%)
+2024,S2701_C04_011EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C04_011MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,persons,annotation
+2024,S2701_C05_011E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percent,estimate
+2024,S2701_C05_011M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,float,percentage points,margin of error (90%)
+2024,S2701_C05_011EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percent,annotation
+2024,S2701_C05_011MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!Under 19 years,string,percentage points,annotation
+2024,S2701_C01_012E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2024,S2701_C01_012M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2024,S2701_C01_012EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C01_012MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C02_012E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2024,S2701_C02_012M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2024,S2701_C02_012EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C02_012MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C03_012E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percent,estimate
+2024,S2701_C03_012M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percentage points,margin of error (90%)
+2024,S2701_C03_012EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percent,annotation
+2024,S2701_C03_012MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percentage points,annotation
+2024,S2701_C04_012E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,estimate
+2024,S2701_C04_012M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,int,persons,margin of error (90%)
+2024,S2701_C04_012EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C04_012MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,persons,annotation
+2024,S2701_C05_012E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percent,estimate
+2024,S2701_C05_012M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,float,percentage points,margin of error (90%)
+2024,S2701_C05_012EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percent,annotation
+2024,S2701_C05_012MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!19 to 64 years,string,percentage points,annotation
+2024,S2701_C01_013E,Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2024,S2701_C01_013M,Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2024,S2701_C01_013EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C01_013MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C02_013E,Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2024,S2701_C02_013M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2024,S2701_C02_013EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C02_013MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C03_013E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percent,estimate
+2024,S2701_C03_013M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percentage points,margin of error (90%)
+2024,S2701_C03_013EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percent,annotation
+2024,S2701_C03_013MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percentage points,annotation
+2024,S2701_C04_013E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,estimate
+2024,S2701_C04_013M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,int,persons,margin of error (90%)
+2024,S2701_C04_013EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C04_013MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,persons,annotation
+2024,S2701_C05_013E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percent,estimate
+2024,S2701_C05_013M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,float,percentage points,margin of error (90%)
+2024,S2701_C05_013EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percent,annotation
+2024,S2701_C05_013MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!AGE!!65 years and older,string,percentage points,annotation
+2024,S2701_C01_014E,Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2024,S2701_C01_014M,Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2024,S2701_C01_014EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C01_014MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C02_014E,Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2024,S2701_C02_014M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2024,S2701_C02_014EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C02_014MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C03_014E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,float,percent,estimate
+2024,S2701_C03_014M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,float,percentage points,margin of error (90%)
+2024,S2701_C03_014EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,percent,annotation
+2024,S2701_C03_014MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Male,string,percentage points,annotation
+2024,S2701_C04_014E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,estimate
+2024,S2701_C04_014M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,int,persons,margin of error (90%)
+2024,S2701_C04_014EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C04_014MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,persons,annotation
+2024,S2701_C05_014E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,float,percent,estimate
+2024,S2701_C05_014M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,float,percentage points,margin of error (90%)
+2024,S2701_C05_014EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,percent,annotation
+2024,S2701_C05_014MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Male,string,percentage points,annotation
+2024,S2701_C01_015E,Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2024,S2701_C01_015M,Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2024,S2701_C01_015EA,Annotation of Estimate!!Total!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C01_015MA,Annotation of Margin of Error!!Total!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C02_015E,Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2024,S2701_C02_015M,Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2024,S2701_C02_015EA,Annotation of Estimate!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C02_015MA,Annotation of Margin of Error!!Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C03_015E,Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,float,percent,estimate
+2024,S2701_C03_015M,Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,float,percentage points,margin of error (90%)
+2024,S2701_C03_015EA,Annotation of Estimate!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,percent,annotation
+2024,S2701_C03_015MA,Annotation of Margin of Error!!Percent Insured!!Civilian noninstitutionalized population!!SEX!!Female,string,percentage points,annotation
+2024,S2701_C04_015E,Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,estimate
+2024,S2701_C04_015M,Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,int,persons,margin of error (90%)
+2024,S2701_C04_015EA,Annotation of Estimate!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C04_015MA,Annotation of Margin of Error!!Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,persons,annotation
+2024,S2701_C05_015E,Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,float,percent,estimate
+2024,S2701_C05_015M,Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,float,percentage points,margin of error (90%)
+2024,S2701_C05_015EA,Annotation of Estimate!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,percent,annotation
+2024,S2701_C05_015MA,Annotation of Margin of Error!!Percent Uninsured!!Civilian noninstitutionalized population!!SEX!!Female,string,percentage points,annotation
