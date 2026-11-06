@@ -6,4 +6,4 @@ The loader, missing-value conversion, known descriptive period difference, count
 
 See the actual-data update below and results/ for calculated findings.
 
-Actual-data update: The authenticated Census API route and full Python pipeline completed successfully for both vintages. Sixty selected summary records and ten overall jurisdiction-period records were validated. All selected quality checks passed, and six chart files were produced. The GitHub workflow and user Databricks workspace remain unverified.
+Actual-data update: The authenticated Census API route and full Python pipeline completed successfully for both vintages. Sixty selected summary records and ten overall jurisdiction-period records were validated. All selected quality checks passed, and six chart files were produced. GitHub Actions run 1 completed successfully in 29 seconds using the saved repository secret and produced a results artifact: https://github.com/Thantyw/data690-census-health-insurance-eda/actions/runs/42164289164. The user Databricks workspace remains unverified.

@@ -22,7 +22,7 @@ The selected 60 summary records contain no missing estimate or margin-of-error c
 
 ## Run on GitHub
 
-Open **Actions → Run Census S2701 EDA → Run workflow**. The manually triggered workflow reads the encrypted repository secret `CENSUS_API_KEY`, refreshes both data snapshots, and uploads the generated results as a downloadable Actions artifact. It does not commit the key or results back to the branch. The initial script run succeeded locally; the GitHub workflow has not yet been verified.
+Open **Actions → Run Census S2701 EDA → Run workflow**. The manually triggered workflow reads the encrypted repository secret `CENSUS_API_KEY`, refreshes both data snapshots, and uploads the generated results as a downloadable Actions artifact. It does not commit the key or results back to the branch. The initial script run succeeded locally, and [GitHub Actions run 1](https://github.com/Thantyw/data690-census-health-insurance-eda/actions/runs/42164289164) completed successfully in 29 seconds and produced a downloadable results artifact.
 
 For local use, set `CENSUS_API_KEY` privately in your process environment. `.env.example` documents the name only; this script does not automatically load `.env` files. Existing CSV snapshots permit offline reruns without a key. A GitHub Actions secret is not automatically available in Databricks; configure a Databricks secret separately if refreshing there.
 
