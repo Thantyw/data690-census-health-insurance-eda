@@ -1,0 +1,39 @@
+{
+  "executed_utc": "2026-11-06T04:37:58.545731+00:00",
+  "sources": [
+    {
+      "vintage": 2019,
+      "period": "2015\u20132019",
+      "source_files": [
+        "data/ACSST5Y2019.S2701-Data.csv"
+      ],
+      "geographies": [
+        "Delaware",
+        "District of Columbia",
+        "Maryland",
+        "Pennsylvania",
+        "Virginia"
+      ],
+      "table": "S2701",
+      "product": "ACS 5-year estimates subject tables"
+    },
+    {
+      "vintage": 2024,
+      "period": "2020\u20132024",
+      "source_files": [
+        "data/ACSST5Y2024.S2701-Data.csv"
+      ],
+      "geographies": [
+        "Delaware",
+        "District of Columbia",
+        "Maryland",
+        "Pennsylvania",
+        "Virginia"
+      ],
+      "table": "S2701",
+      "product": "ACS 5-year estimates subject tables"
+    }
+  ],
+  "code": "s2701_eda.py",
+  "status": "calculated from supplied official estimates"
+}
