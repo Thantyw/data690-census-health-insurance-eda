@@ -327,7 +327,7 @@ html_escape <- function(x) {
     fixed = TRUE
   )
 
-  x
+  return(x)
 }
 
 
@@ -347,16 +347,12 @@ for (i in seq_len(nrow(table_data))) {
 
   estimate <- sprintf(
     "%.1f%%",
-    table_data[
-      ["Uninsured population (%)"]
-    ][i]
+    table_data[["Uninsured population (%)"]][i]
   )
 
   moe <- sprintf(
     "±%.1f",
-    table_data[
-      ["90% margin of error (pp)"]
-    ][i]
+    table_data[["90% margin of error (pp)"]][i]
   )
 
   html_rows[i] <- paste0(
@@ -449,7 +445,7 @@ html_document <- paste0(
 
     <caption>
         Uninsured population estimates across five jurisdictions,
-        2020–2024 ACS five-year estimates
+        2020-2024 ACS five-year estimates
     </caption>
 
     <thead>
@@ -489,7 +485,7 @@ paste(
     <strong>Source:</strong>
 
     U.S. Census Bureau, American Community Survey,
-    2020–2024 ACS 5-Year Estimates,
+    2020-2024 ACS 5-Year Estimates,
     Subject Table S2701,
     <em>Selected Characteristics of Health Insurance Coverage
     in the United States</em>.
