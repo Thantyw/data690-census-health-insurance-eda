@@ -17,66 +17,25 @@
 #   Delaware, District of Columbia, Maryland,
 #   Pennsylvania, and Virginia.
 #
-# Input:
-#   visualization_type/data/ACSST5Y2024.S2701-Data.csv
-#
 # Output:
-#   visualization_type/assets/StackedBarChart1_R.png
+#   results/StackedBarChart1_R.png
 #
-# This script reads the versioned Census flat CSV stored in the
-# visualization_type/data directory. Missing or unavailable values
-# are not replaced with zero.
+# This script reads the official Census flat CSV stored in the
+# repository's data directory. Missing or unavailable values are
+# not replaced with zero.
 
 
 # ---------------------------------------------------------------------
 # File locations
 # ---------------------------------------------------------------------
 
-# Determine the location of this script when executed with Rscript.
-command_args <- commandArgs(
-  trailingOnly = FALSE
-)
-
-file_arg <- grep(
-  "^--file=",
-  command_args,
-  value = TRUE
-)
-
-if (length(file_arg) != 1) {
-  stop(
-    "Unable to determine the location of StackedBarChart.R."
-  )
-}
-
-script_file <- normalizePath(
-  sub(
-    "^--file=",
-    "",
-    file_arg
-  ),
-  mustWork = TRUE
-)
-
-# This script is stored in visualization_type/code/.
-code_dir <- dirname(
-  script_file
-)
-
-# The parent directory contains the guidance pages, data, and assets.
-visualization_dir <- dirname(
-  code_dir
-)
-
 data_file <- file.path(
-  visualization_dir,
   "data",
   "ACSST5Y2024.S2701-Data.csv"
 )
 
 output_file <- file.path(
-  visualization_dir,
-  "assets",
+  "results",
   "StackedBarChart1_R.png"
 )
 
@@ -366,7 +325,7 @@ png(
 # ---------------------------------------------------------------------
 
 par(
-  mar = c(6.5, 10, 4.5, 3.5),
+  mar = c(6.5, 10, 4.5, 1.5),
   family = "sans"
 )
 
@@ -430,7 +389,7 @@ for (i in seq_len(nrow(chart_data))) {
   if (uninsured_value < 4) {
 
     text(
-      x = 100.5,
+      x = 101,
       y = bar_positions[i],
       labels = sprintf(
         "%.1f%%",
