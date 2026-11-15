@@ -6,33 +6,35 @@ ACS S2701 Data Acquisition and Schema Validation Utility
 
 Purpose
 -------
-Retrieve ACS 5-Year Subject Table S2701 data from the U.S. Census
-Bureau API and transform the API response into the exact project
-schema used by the validated S2701 snapshots.
+Retrieve ACS 5-Year Subject Table S2701 data from the
+U.S. Census Bureau API and transform the API response into
+the exact project schema used by the validated S2701 snapshots.
 
-The utility is designed to:
+The utility:
 
-1. Read the Census API key from CENSUS_API_KEY or securely prompt
-   for the key.
-2. Retrieve the complete ACS S2701 subject-table group.
-3. Retain the five project jurisdictions:
+1. Reads the Census API key from CENSUS_API_KEY or securely
+   prompts for the key.
+2. Retrieves the complete ACS S2701 subject-table group.
+3. Retains the five project jurisdictions:
       Delaware
       District of Columbia
       Maryland
       Pennsylvania
       Virginia
-4. Construct project-specific geography fields:
+4. Constructs project-specific geography/provenance fields:
       NAME
       GEO_ID
       NAME.1
       state
       source_file
-5. Match the exact column names and column order of the existing
-   validated project snapshot.
-6. Validate important analytical fields.
-7. Compare the candidate against the existing validated snapshot.
-8. Save the result as an API candidate.
-9. Never overwrite the validated project snapshot automatically.
+5. Matches the exact column names and column order of the
+   existing validated project snapshot.
+6. Normalizes Census API null values to the blank representation
+   used by the validated project snapshot.
+7. Validates important analytical fields.
+8. Compares the candidate against the existing validated snapshot.
+9. Saves the result as an API candidate.
+10. Never overwrites the validated project snapshot automatically.
 
 Example
 -------
@@ -72,10 +74,12 @@ STATES = {
     "51": "Virginia",
 }
 
+# Key analytical variables used by the current visualization
+# examples.
 REQUIRED_VARIABLES = [
     "S2701_C03_001E",  # Percent with health insurance coverage
     "S2701_C05_001E",  # Percent without health insurance coverage
-    "S2701_C05_001M",  # MOE for percent without insurance
+    "S2701_C05_001M",  # 90% MOE: percent without coverage
 ]
 
 PROJECT_PREFIX_COLUMNS = [
@@ -109,6 +113,9 @@ DATA_DIR.mkdir(
 # ============================================================
 
 def parse_arguments():
+    """
+    Parse command-line arguments.
+    """
 
     parser = argparse.ArgumentParser(
         description=(
@@ -148,21 +155,13 @@ def get_api_key():
     ).strip()
 
     if key:
-        print(
-            "CENSUS_API_KEY found in environment."
-        )
+        print("CENSUS_API_KEY found in environment.")
         return key
 
     print()
-    print(
-        "CENSUS_API_KEY was not found in the environment."
-    )
-    print(
-        "Enter your Census API key below."
-    )
-    print(
-        "The key will not be displayed or saved."
-    )
+    print("CENSUS_API_KEY was not found in the environment.")
+    print("Enter your Census API key below.")
+    print("The key will not be displayed or saved.")
 
     key = getpass(
         "Census API key: "
@@ -184,8 +183,8 @@ def request_json(base_url, params=None):
     """
     Retrieve JSON from a Census endpoint.
 
-    The request URL is intentionally not printed because data
-    requests may contain the user's Census API key.
+    The complete request URL is intentionally not printed because
+    data requests may contain the user's Census API key.
     """
 
     if params:
@@ -194,24 +193,19 @@ def request_json(base_url, params=None):
             safe="(),:*",
         )
 
-        request_url = (
-            f"{base_url}?{query}"
-        )
+        request_url = f"{base_url}?{query}"
 
     else:
         request_url = base_url
 
     try:
-
         with urllib.request.urlopen(
             request_url,
             timeout=120,
         ) as response:
-
             raw = response.read()
 
     except urllib.error.HTTPError as exc:
-
         try:
             error_body = exc.read().decode(
                 "utf-8",
@@ -229,22 +223,17 @@ def request_json(base_url, params=None):
                 f"\nCensus response: {error_body[:500]}"
             )
 
-        raise RuntimeError(
-            message
-        ) from None
+        raise RuntimeError(message) from None
 
     except urllib.error.URLError as exc:
-
         raise RuntimeError(
             "Unable to connect to the Census API."
         ) from exc
 
     try:
-
         return json.loads(raw)
 
     except json.JSONDecodeError as exc:
-
         raise RuntimeError(
             "Census API returned invalid JSON."
         ) from exc
@@ -259,7 +248,7 @@ def fetch_s2701(year, api_key):
     Retrieve the complete S2701 group for all states.
 
     group(S2701) already contains NAME. Therefore NAME is not
-    requested separately. This avoids duplicate NAME columns.
+    requested separately. This prevents duplicate NAME columns.
     """
 
     base_url = (
@@ -277,21 +266,11 @@ def fetch_s2701(year, api_key):
     print("=" * 70)
     print("REQUESTING CENSUS DATA")
     print("=" * 70)
-    print(
-        f"ACS release year : {year}"
-    )
-    print(
-        "Product          : ACS 5-Year Subject Tables"
-    )
-    print(
-        f"Table            : {TABLE}"
-    )
-    print(
-        "Geography        : State"
-    )
-    print(
-        "API key          : [hidden]"
-    )
+    print(f"ACS release year : {year}")
+    print("Product          : ACS 5-Year Subject Tables")
+    print(f"Table            : {TABLE}")
+    print("Geography        : State")
+    print("API key          : [hidden]")
     print()
 
     body = request_json(
@@ -310,7 +289,7 @@ def fetch_s2701(year, api_key):
     header = body[0]
     rows = body[1:]
 
-    # Detect duplicate API fields before creating DataFrame.
+    # Detect duplicate API fields before constructing DataFrame.
     duplicate_columns = sorted(
         {
             column
@@ -330,14 +309,8 @@ def fetch_s2701(year, api_key):
         columns=header,
     )
 
-    print(
-        f"Raw API rows      : {len(frame)}"
-    )
-
-    print(
-        f"Raw API columns   : {len(frame.columns)}"
-    )
-
+    print(f"Raw API rows      : {len(frame)}")
+    print(f"Raw API columns   : {len(frame.columns)}")
     print()
 
     return frame, base_url
@@ -358,23 +331,25 @@ def select_project_states(frame):
             "the state geography field."
         )
 
-    selected = frame[
-        frame["state"].astype(str).isin(
-            STATES.keys()
-        )
-    ].copy()
+    # Standardize state codes before filtering.
+    frame = frame.copy()
 
-    # Force state codes to two-character strings.
-    selected["state"] = (
-        selected["state"]
+    frame["state"] = (
+        frame["state"]
         .astype(str)
         .str.zfill(2)
     )
 
-    selected = selected.sort_values(
-        "state"
-    ).reset_index(
-        drop=True
+    selected = frame[
+        frame["state"].isin(
+            STATES.keys()
+        )
+    ].copy()
+
+    selected = (
+        selected
+        .sort_values("state")
+        .reset_index(drop=True)
     )
 
     expected_states = set(
@@ -386,7 +361,6 @@ def select_project_states(frame):
     )
 
     if actual_states != expected_states:
-
         missing = (
             expected_states
             - actual_states
@@ -430,7 +404,7 @@ def load_reference_snapshot(year):
     """
     Load the existing validated project snapshot.
 
-    This file is the schema contract for the API candidate.
+    This file acts as the schema contract for the API candidate.
     """
 
     reference_file = (
@@ -439,13 +413,12 @@ def load_reference_snapshot(year):
     )
 
     if not reference_file.exists():
-
         raise FileNotFoundError(
             "\nThe existing validated snapshot was not found:\n"
             f"{reference_file}\n\n"
-            "The acquisition utility intentionally requires an "
-            "existing validated snapshot because the project uses "
-            "that file as the schema contract."
+            "The acquisition utility requires an existing "
+            "validated snapshot because that file is used as "
+            "the schema contract."
         )
 
     reference = pd.read_csv(
@@ -458,19 +431,9 @@ def load_reference_snapshot(year):
     print("=" * 70)
     print("REFERENCE SNAPSHOT")
     print("=" * 70)
-
-    print(
-        f"File             : {reference_file.name}"
-    )
-
-    print(
-        f"Rows             : {len(reference)}"
-    )
-
-    print(
-        f"Columns          : {len(reference.columns)}"
-    )
-
+    print(f"File             : {reference_file.name}")
+    print(f"Rows             : {len(reference)}")
+    print(f"Columns          : {len(reference.columns)}")
     print()
 
     return reference, reference_file
@@ -482,8 +445,8 @@ def load_reference_snapshot(year):
 
 def validate_reference_schema(reference):
     """
-    Confirm that the existing project snapshot contains the
-    structural fields required by the acquisition workflow.
+    Confirm that the validated snapshot contains the structural
+    fields required by the acquisition workflow.
     """
 
     required_project_fields = (
@@ -508,7 +471,6 @@ def validate_reference_schema(reference):
         )
 
     if reference.columns.duplicated().any():
-
         duplicates = (
             reference.columns[
                 reference.columns.duplicated()
@@ -522,15 +484,12 @@ def validate_reference_schema(reference):
             + ", ".join(duplicates)
         )
 
-    print(
-        "Reference schema validation: PASS"
-    )
-
+    print("Reference schema validation: PASS")
     print()
 
 
 # ============================================================
-# CONSTRUCT PROJECT SCHEMA
+# CONSTRUCT EXACT PROJECT SCHEMA
 # ============================================================
 
 def construct_project_schema(
@@ -539,12 +498,15 @@ def construct_project_schema(
     year,
 ):
     """
-    Transform the raw Census API result into the exact schema
+    Transform the raw Census API response into the exact schema
     used by the existing validated project snapshot.
 
-    Important:
-    NAME.1 is created explicitly. It is not produced by allowing
-    pandas to silently rename a duplicate NAME column.
+    NAME.1 is created explicitly. It is not created by allowing
+    pandas to silently rename a duplicate NAME field.
+
+    Census API null values are converted to blank strings so that
+    annotation fields use the same representation as the existing
+    validated CSV.
     """
 
     frame = api_frame.copy()
@@ -560,7 +522,7 @@ def construct_project_schema(
         )
 
     # --------------------------------------------------------
-    # Create project geography fields
+    # Standardize state codes
     # --------------------------------------------------------
 
     frame["state"] = (
@@ -568,6 +530,10 @@ def construct_project_schema(
         .astype(str)
         .str.zfill(2)
     )
+
+    # --------------------------------------------------------
+    # Construct project geography fields
+    # --------------------------------------------------------
 
     frame["GEO_ID"] = (
         "0400000US"
@@ -579,12 +545,16 @@ def construct_project_schema(
         .astype(str)
     )
 
+    # --------------------------------------------------------
+    # Construct provenance field
+    # --------------------------------------------------------
+
     frame["source_file"] = (
         f"Census API {year} ACS five-year subject S2701"
     )
 
     # --------------------------------------------------------
-    # Use reference file as exact schema contract
+    # Use validated reference as exact schema contract
     # --------------------------------------------------------
 
     reference_columns = (
@@ -602,7 +572,6 @@ def construct_project_schema(
     ]
 
     if missing_columns:
-
         print()
         print("=" * 70)
         print("SCHEMA CONSTRUCTION FAILED")
@@ -614,15 +583,12 @@ def construct_project_schema(
         )
 
         print()
-
         print(
             f"Missing columns: {len(missing_columns)}"
         )
 
         for column in missing_columns[:50]:
-            print(
-                f"  - {column}"
-            )
+            print(f"  - {column}")
 
         if len(missing_columns) > 50:
             print(
@@ -635,10 +601,26 @@ def construct_project_schema(
             "reference schema."
         )
 
-    # Exact reference order.
+    # --------------------------------------------------------
+    # Exact reference column order
+    # --------------------------------------------------------
+
     candidate = frame[
         reference_columns
     ].copy()
+
+    # --------------------------------------------------------
+    # Normalize API null values
+    # --------------------------------------------------------
+    #
+    # Census API JSON can return null for annotation fields.
+    # The validated CSV represents these values as blank cells.
+    # Converting null/None/NaN to "" makes the API candidate
+    # structurally and representationally compatible with the
+    # existing project snapshot.
+    # --------------------------------------------------------
+
+    candidate = candidate.fillna("")
 
     return candidate
 
@@ -652,8 +634,9 @@ def validate_exact_schema(
     reference,
 ):
     """
-    Require the candidate to have exactly the same column names
-    and column order as the validated reference snapshot.
+    Require the candidate to have exactly the same row count,
+    column count, column names, and column order as the validated
+    reference snapshot.
     """
 
     print("=" * 70)
@@ -711,7 +694,6 @@ def validate_exact_schema(
     # --------------------------------------------------------
 
     if candidate_columns != reference_columns:
-
         differences = []
 
         for index, (
@@ -724,12 +706,10 @@ def validate_exact_schema(
             ),
             start=1,
         ):
-
             if (
                 reference_column
                 != candidate_column
             ):
-
                 differences.append(
                     (
                         index,
@@ -739,16 +719,13 @@ def validate_exact_schema(
                 )
 
         print()
-        print(
-            "Column-order differences:"
-        )
+        print("Column-order differences:")
 
         for (
             index,
             expected,
             actual,
         ) in differences[:25]:
-
             print(
                 f"{index:4}: "
                 f"expected={expected!r}, "
@@ -760,26 +737,11 @@ def validate_exact_schema(
             "the reference schema."
         )
 
-    print(
-        "Row count          : PASS"
-    )
-
-    print(
-        "Column count       : PASS"
-    )
-
-    print(
-        "Column names       : PASS"
-    )
-
-    print(
-        "Column order       : PASS"
-    )
-
-    print(
-        "Exact schema       : PASS"
-    )
-
+    print("Row count          : PASS")
+    print("Column count       : PASS")
+    print("Column names       : PASS")
+    print("Column order       : PASS")
+    print("Exact schema       : PASS")
     print()
 
 
@@ -792,7 +754,7 @@ def validate_analytical_fields(
     year,
 ):
     """
-    Validate important analytical fields used by the current
+    Validate the analytical fields used by the current
     visualization examples.
     """
 
@@ -801,7 +763,7 @@ def validate_analytical_fields(
     print("=" * 70)
 
     # --------------------------------------------------------
-    # Geography names
+    # Geography validation
     # --------------------------------------------------------
 
     for (
@@ -892,6 +854,10 @@ def validate_analytical_fields(
         "S2701_C05_001M"
     ]
 
+    # --------------------------------------------------------
+    # Percentage validation
+    # --------------------------------------------------------
+
     if not insured.between(
         0,
         100,
@@ -908,12 +874,20 @@ def validate_analytical_fields(
             "Uninsured percentages fall outside 0–100."
         )
 
+    # --------------------------------------------------------
+    # MOE validation
+    # --------------------------------------------------------
+
     if (
         uninsured_moe < 0
     ).any():
         raise ValueError(
             "Negative uninsured MOE detected."
         )
+
+    # --------------------------------------------------------
+    # Composition validation
+    # --------------------------------------------------------
 
     composition = (
         insured
@@ -931,38 +905,14 @@ def validate_analytical_fields(
             "to approximately 100%."
         )
 
-    print(
-        f"Year               : {year}"
-    )
-
-    print(
-        "Geographies        : PASS"
-    )
-
-    print(
-        "GEO_ID             : PASS"
-    )
-
-    print(
-        "NAME / NAME.1      : PASS"
-    )
-
-    print(
-        "Required variables : PASS"
-    )
-
-    print(
-        "Percentage ranges  : PASS"
-    )
-
-    print(
-        "MOE validation     : PASS"
-    )
-
-    print(
-        "Composition        : PASS"
-    )
-
+    print(f"Year               : {year}")
+    print("Geographies        : PASS")
+    print("GEO_ID             : PASS")
+    print("NAME / NAME.1      : PASS")
+    print("Required variables : PASS")
+    print("Percentage ranges  : PASS")
+    print("MOE validation     : PASS")
+    print("Composition        : PASS")
     print()
 
 
@@ -1018,19 +968,59 @@ def normalize_value(value):
     """
     Normalize values before comparison.
 
-    Numeric strings such as 6.30 and 6.3 are treated as equal.
-    Blank strings remain blank.
+    Rules
+    -----
+    - Actual Python None values are treated as blank.
+    - pandas NA/NaN values are treated as blank.
+    - Empty strings remain blank.
+    - Text representations of null values are treated as blank.
+    - Numeric strings such as 6.30 and 6.3 are treated as equal.
+    - Non-numeric text is preserved.
     """
+
+    # --------------------------------------------------------
+    # Actual Python None
+    # --------------------------------------------------------
+
+    if value is None:
+        return ""
+
+    # --------------------------------------------------------
+    # pandas missing values
+    # --------------------------------------------------------
+
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+
+    # --------------------------------------------------------
+    # Convert to normalized text
+    # --------------------------------------------------------
 
     text = str(
         value
     ).strip()
 
-    if text == "":
+    # --------------------------------------------------------
+    # Normalize textual missing-value representations
+    # --------------------------------------------------------
+
+    if text.lower() in {
+        "",
+        "none",
+        "nan",
+        "null",
+        "<na>",
+    }:
         return ""
 
-    try:
+    # --------------------------------------------------------
+    # Normalize equivalent numeric representations
+    # --------------------------------------------------------
 
+    try:
         number = float(
             text
         )
@@ -1045,7 +1035,6 @@ def normalize_value(value):
         )
 
     except ValueError:
-
         return text
 
 
@@ -1058,8 +1047,8 @@ def compare_key_values(
     reference,
 ):
     """
-    Compare important analytical values against the validated
-    snapshot.
+    Compare the three key analytical fields against the
+    validated snapshot.
     """
 
     print("=" * 70)
@@ -1074,25 +1063,37 @@ def compare_key_values(
 
     all_match = True
 
-    for state_code, geography in STATES.items():
+    reference_work = (
+        reference.copy()
+    )
+
+    reference_work["state"] = (
+        reference_work["state"]
+        .astype(str)
+        .str.zfill(2)
+    )
+
+    for (
+        state_code,
+        geography,
+    ) in STATES.items():
 
         candidate_row = candidate.loc[
             candidate["state"]
             == state_code
         ]
 
-        reference_row = reference.loc[
-            reference["state"]
-            .astype(str)
-            .str.zfill(2)
-            == state_code
-        ]
+        reference_row = (
+            reference_work.loc[
+                reference_work["state"]
+                == state_code
+            ]
+        )
 
         if (
             candidate_row.empty
             or reference_row.empty
         ):
-
             print(
                 f"{geography}: MISSING"
             )
@@ -1120,7 +1121,6 @@ def compare_key_values(
                 candidate_value
                 != reference_value
             ):
-
                 state_match = False
                 all_match = False
 
@@ -1138,13 +1138,11 @@ def compare_key_values(
     print()
 
     if all_match:
-
         print(
             "Key analytical comparison: PASS"
         )
 
     else:
-
         print(
             "Key analytical comparison: REVIEW REQUIRED"
         )
@@ -1155,7 +1153,7 @@ def compare_key_values(
 
 
 # ============================================================
-# FULL DATA COMPARISON
+# FULL SNAPSHOT COMPARISON
 # ============================================================
 
 def compare_full_snapshot(
@@ -1163,10 +1161,11 @@ def compare_full_snapshot(
     reference,
 ):
     """
-    Compare all columns except source_file.
+    Compare all project fields except source_file.
 
-    source_file intentionally differs because it records provenance
-    for the API-generated candidate.
+    source_file is excluded because it is a provenance field.
+    The API-generated candidate intentionally records API
+    acquisition provenance.
     """
 
     print("=" * 70)
@@ -1193,7 +1192,10 @@ def compare_full_snapshot(
         .copy()
     )
 
-    # Normalize state code formatting.
+    # --------------------------------------------------------
+    # Normalize state codes
+    # --------------------------------------------------------
+
     reference_compare["state"] = (
         reference_compare["state"]
         .astype(str)
@@ -1206,7 +1208,10 @@ def compare_full_snapshot(
         .str.zfill(2)
     )
 
-    # Sort both snapshots by state.
+    # --------------------------------------------------------
+    # Sort both snapshots deterministically
+    # --------------------------------------------------------
+
     reference_compare = (
         reference_compare
         .sort_values("state")
@@ -1221,6 +1226,10 @@ def compare_full_snapshot(
 
     mismatch_count = 0
     examples = []
+
+    # --------------------------------------------------------
+    # Compare every value
+    # --------------------------------------------------------
 
     for column in comparison_columns:
 
@@ -1244,7 +1253,6 @@ def compare_full_snapshot(
                 reference_value
                 != candidate_value
             ):
-
                 mismatch_count += 1
 
                 if len(examples) < 20:
@@ -1269,8 +1277,11 @@ def compare_full_snapshot(
                         )
                     )
 
-    if mismatch_count == 0:
+    # --------------------------------------------------------
+    # Report results
+    # --------------------------------------------------------
 
+    if mismatch_count == 0:
         print(
             "All comparable values match the "
             "validated snapshot."
@@ -1289,10 +1300,7 @@ def compare_full_snapshot(
     )
 
     print()
-
-    print(
-        "First mismatches:"
-    )
+    print("First mismatches:")
 
     for (
         geography,
@@ -1326,7 +1334,7 @@ def fetch_variable_metadata(year):
     """
     Retrieve official Census variable metadata.
 
-    No API key is placed in the metadata URL.
+    The API key is not included in this metadata request.
     """
 
     metadata_url = (
@@ -1363,7 +1371,6 @@ def fetch_variable_metadata(year):
                 f"{TABLE}_"
             )
         ):
-
             selected[
                 variable
             ] = details
@@ -1386,7 +1393,9 @@ def save_candidate(
     year,
 ):
     """
-    Save API candidate without overwriting the validated snapshot.
+    Save the API result as a candidate snapshot.
+
+    The existing validated snapshot is never overwritten.
     """
 
     candidate_file = (
@@ -1403,14 +1412,8 @@ def save_candidate(
         encoding="utf-8",
     )
 
-    print(
-        "Candidate data saved:"
-    )
-
-    print(
-        candidate_file
-    )
-
+    print("Candidate data saved:")
+    print(candidate_file)
     print()
 
     return candidate_file
@@ -1444,6 +1447,18 @@ def save_metadata(
         )
     )
 
+    if (
+        key_match
+        and full_match
+    ):
+        validation_status = "pass"
+
+    elif key_match:
+        validation_status = "partial_pass"
+
+    else:
+        validation_status = "review_required"
+
     document = {
         "project": (
             "DATA 690 Census Bureau Sponsored Project"
@@ -1473,9 +1488,7 @@ def save_metadata(
                 timezone.utc
             ).isoformat()
         ),
-        "geography": (
-            "State"
-        ),
+        "geography": "State",
         "jurisdictions": list(
             STATES.values()
         ),
@@ -1498,14 +1511,19 @@ def save_metadata(
         "full_snapshot_match_excluding_source_file": (
             bool(full_match)
         ),
+        "validation_status": (
+            validation_status
+        ),
         "status": (
             "candidate_pending_review"
         ),
         "notes": (
             "The API candidate was transformed to the exact "
             "column schema of the existing validated project "
-            "snapshot. The existing validated snapshot was not "
-            "overwritten automatically."
+            "snapshot. Census API null annotation values were "
+            "normalized to blank strings to match the validated "
+            "CSV representation. The existing validated snapshot "
+            "was not overwritten automatically."
         ),
         "census_variable_metadata": (
             metadata_variables
@@ -1525,14 +1543,8 @@ def save_metadata(
             ensure_ascii=False,
         )
 
-    print(
-        "Candidate metadata saved:"
-    )
-
-    print(
-        metadata_file
-    )
-
+    print("Candidate metadata saved:")
+    print(metadata_file)
     print()
 
     return metadata_file
@@ -1600,9 +1612,7 @@ def print_final_report(
 
     print()
 
-    print(
-        "Candidate files:"
-    )
+    print("Candidate files:")
 
     print(
         f"  Data     : {candidate_file}"
@@ -1618,7 +1628,6 @@ def print_final_report(
         key_match
         and full_match
     ):
-
         print(
             "OVERALL VALIDATION STATUS: PASS"
         )
@@ -1629,19 +1638,17 @@ def print_final_report(
         )
 
     elif key_match:
-
         print(
             "OVERALL VALIDATION STATUS: PARTIAL PASS"
         )
 
         print(
             "The key analytical values match, but differences "
-            "exist elsewhere in the complete S2701 snapshot. "
+            "remain elsewhere in the complete S2701 snapshot. "
             "Review those differences before promotion."
         )
 
     else:
-
         print(
             "OVERALL VALIDATION STATUS: REVIEW REQUIRED"
         )
@@ -1684,7 +1691,7 @@ def main():
     print()
 
     # --------------------------------------------------------
-    # Load reference first
+    # Load existing validated snapshot
     # --------------------------------------------------------
 
     reference, reference_file = (
@@ -1693,18 +1700,22 @@ def main():
         )
     )
 
+    # --------------------------------------------------------
+    # Validate existing schema
+    # --------------------------------------------------------
+
     validate_reference_schema(
         reference
     )
 
     # --------------------------------------------------------
-    # API key
+    # Obtain API key
     # --------------------------------------------------------
 
     api_key = get_api_key()
 
     # --------------------------------------------------------
-    # Retrieve Census data
+    # Retrieve complete Census S2701 group
     # --------------------------------------------------------
 
     raw_frame, api_endpoint = (
@@ -1755,7 +1766,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Display important values
+    # Display key project values
     # --------------------------------------------------------
 
     display_summary(
@@ -1786,7 +1797,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Retrieve official Census metadata
+    # Retrieve official Census variable metadata
     # --------------------------------------------------------
 
     metadata_variables = (
@@ -1807,7 +1818,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Save provenance metadata
+    # Save provenance and validation metadata
     # --------------------------------------------------------
 
     metadata_file = (
